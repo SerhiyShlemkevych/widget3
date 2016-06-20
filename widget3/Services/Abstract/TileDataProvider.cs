@@ -10,15 +10,15 @@ namespace widget3.Services.Abstract
 {
     public abstract class TileDataProvider<TTile>
     {
-        ICommonDataService _commonData;
+        IUserDataService _userData;
 
         ObservableCollection<TTile> _tiles;
 
-        public TileDataProvider(ICommonDataService commonData)
+        public TileDataProvider(IUserDataService userData)
         {
             _tiles = new ObservableCollection<TTile>();
             _tiles.CollectionChanged += OnTilesChanged;
-            _commonData = commonData;
+            _userData = userData;
         }
 
         protected abstract void OnTilesChanged(object sender, NotifyCollectionChangedEventArgs e);
