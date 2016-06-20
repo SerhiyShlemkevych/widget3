@@ -59,11 +59,39 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Services\Abstract\ICommonDataService.cs" />
+    <Compile Include="Controls\Concrete\MainWindow\AlarmTile.xaml.cs">
+      <DependentUpon>AlarmTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Concrete\MainWindow\DateTimeTile.xaml.cs">
+      <DependentUpon>DateTimeTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Concrete\MainWindow\DynamicGrid.cs" />
+    <Compile Include="Controls\Concrete\MainWindow\TaskTile.xaml.cs">
+      <DependentUpon>TaskTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Concrete\MainWindow\WeatherTile.xaml.cs">
+      <DependentUpon>WeatherTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\BackgroundType.cs" />
+    <Compile Include="Enums\TileType.cs" />
+    <Compile Include="Models\BackgroundModel.cs" />
+    <Compile Include="Models\ConfigurationModel.cs" />
+    <Compile Include="Models\TileModel.cs" />
     <Compile Include="Services\Abstract\IMapperService.cs" />
     <Compile Include="Services\Abstract\TileDataProvider.cs" />
-    <Compile Include="Services\Abstract\IUserDataProvider.cs" />
+    <Compile Include="Services\Abstract\IUserDataService.cs" />
+    <Compile Include="Services\Concrete\LocalUserDataService.cs" />
     <Compile Include="Services\Concrete\ReflectionMapper.cs" />
+    <Compile Include="ViewModels\Abstract\Common\TileViewModel.cs" />
+    <Compile Include="ViewModels\Abstract\Common\ViewModel.cs" />
+    <Compile Include="ViewModels\Concrete\Common\BackgroundViewModel.cs" />
+    <Compile Include="ViewModels\Concrete\Common\ConfigurationViewModel.cs" />
+    <Compile Include="Controls\Abstract\Common\TileBase.cs" />
+    <Compile Include="ViewModels\Concrete\Common\TaskTileViewModel.cs" />
+    <Compile Include="ViewModels\Concrete\MainWindow\MainWindowViewModel.cs" />
+    <Compile Include="Views\Main\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,9 +121,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <Folder Include="ViewModels\Abstract\MainWindow\" />
+    <Folder Include="ViewModels\Abstract\SettingsWindow\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\Concrete\MainWindow\AlarmTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Concrete\MainWindow\DateTimeTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Concrete\MainWindow\TaskTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Concrete\MainWindow\WeatherTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Main\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
