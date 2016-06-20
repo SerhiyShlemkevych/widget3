@@ -7,9 +7,9 @@ using widget3.Services.Abstract;
 
 namespace widget3.Services.Concrete
 {
-    public class ReflectionMapper<TFrom, TInto> : IMapperService<TFrom, TInto>
+    public class ReflectionMapper : IMapperService
     {
-        public TInto Map(TFrom from)
+        public TInto Map<TFrom, TInto>(TFrom from)
         {
             if (from == null)
             {
@@ -34,14 +34,14 @@ namespace widget3.Services.Concrete
             return (TInto)into;
         }
 
-        public TInto Map(TFrom from, Action<TFrom, TInto> customCast)
+        public TInto Map<TFrom, TInto>(TFrom from, Action<TFrom, TInto> customCast)
         {
             if (customCast == null)
             {
                 throw new ArgumentNullException("customCast");
             }
 
-            TInto into = Map(from);
+            TInto into = Map<TFrom, TInto>(from);
             customCast(from, into);
             return into;
         }
