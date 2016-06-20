@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace widget3.Services.Abstract
 {
-    public interface IMapperService<TFrom, TInto>
+    public interface IMapperService
     {
-        TInto Map(TFrom from);
-        TInto Map(TFrom from, Action<TFrom, TInto> customCast);
+        TInto Map<TFrom, TInto>(TFrom from);
+        TInto Map<TFrom, TInto>(TFrom from, Action<TFrom, TInto> customCast);
     }
 }
