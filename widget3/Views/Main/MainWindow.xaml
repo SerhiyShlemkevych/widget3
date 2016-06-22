@@ -5,19 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:widget3.Views.Main"
         xmlns:extensions="clr-namespace:widget3.Controls.Concrete.MainWindow"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
         mc:Ignorable="d"
-        Title="MainWindow" Height="{Binding WindowHeight}" Width="{Binding WindowWidth}"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Top="0"
+        Left="0"
+        Title="MainWindow" Height="{Binding Path=Configuration.WindowHeight, Mode=TwoWay}" Width="{Binding Path=Configuration.WindowWidth, Mode=TwoWay}"
         Background="{Binding WindowBackground}"
         >
+    <Grid>
+        <ItemsControl ItemsSource="{Binding TileViews}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid Grid.Row="1" extensions:DynamicGrid.ColumnCount="{Binding Path=Configuration.ColumnCount}" extensions:DynamicGrid.RowCount="{Binding Path=Configuration.RowCount}" extensions:DynamicGrid.CellSize="{Binding Path=Configuration.TileSize}" ShowGridLines="False">
 
-    <ItemsControl>
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <Grid Grid.Row="1" extensions:DynamicGrid.ColumnCount="{Binding ColumnCount}" extensions:DynamicGrid.RowCount="{Binding RowCount}" extensions:DynamicGrid.CellSize="{Binding Path=Configuration.TileSize}" ShowGridLines="True">
-
-                </Grid>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-    </ItemsControl>
-
+                    </Grid>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        <Button Content="Settings" Command="{Binding OpenSettingsWindowCommand}" Width="50" Height="30" Margin="708,463,10,42"/>
+        <Button Content="Exit" Command="{Binding ExitCommand}" Width="50" Height="30" Margin="708,498,10,7"/>
+    </Grid>
 </Window>
