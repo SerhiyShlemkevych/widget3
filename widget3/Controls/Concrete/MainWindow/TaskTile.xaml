@@ -6,9 +6,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:widget3.Controls.Concrete.MainWindow"
              mc:Ignorable="d" 
-                   x:Name="tile"
+             x:Name="root"
+             Grid.Column="{Binding Column}"
+             Grid.Row="{Binding Row}"
+             Grid.RowSpan="{Binding Height}"
+             Grid.ColumnSpan="{Binding Width}"
+             Command="{Binding Command}"
+             Margin="{Binding ElementName=root, Path=Margin}" 
+             CommandParameter="{Binding CommandParameter}"
+             Background="{Binding Path=Background.BackgroundData, Converter={StaticResource BackgroundConverter}}"
+             BorderThickness="{Binding BorderThickness}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Button Command="{Binding ElementName=tile, Path=Command}" CommandParameter="{Binding ElementName=tile, Path=CommandParameter}" Content="{Binding ElementName=tile, Path=Text}" FontSize="{Binding ElementName=tile, Path=FontSize}" Background="{Binding ElementName=tile, Path=Background}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="#4000FF00" Visibility="{Binding DoneVisibility}" />
+        <Label HorizontalContentAlignment="Center" Content="✔" FontSize="{Binding ElementName=root, Path=SubFontSize}" Visibility="{Binding DoneVisibility}" VerticalContentAlignment="Center" Foreground="White" Padding="0"/>
+        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding ElementName=root, Path=Foreground}"  Content="{Binding Text}" FontSize="{Binding ElementName=root, Path=FontSize}" Grid.RowSpan="2"  />
     </Grid>
 </asbtract:TileBase>
