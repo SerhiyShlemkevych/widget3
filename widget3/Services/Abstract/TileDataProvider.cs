@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Specialized;
+using widget3.ViewModels.Abstract.Common;
 
 namespace widget3.Services.Abstract
 {
-    public abstract class TileDataProvider<TTile>
+    public abstract class TileDataProvider<TTile> : ITileDataProvider where TTile : TileViewModel
     {
         IUserDataService _userData;
 
@@ -16,31 +17,69 @@ namespace widget3.Services.Abstract
 
         public TileDataProvider(IUserDataService userData)
         {
-            _tiles = new ObservableCollection<TTile>();
-            _tiles.CollectionChanged += OnTilesChanged;
             _userData = userData;
+            _tiles = new ObservableCollection<TTile>();
+            InitializeExistedTiles();
+            userData.Tiles.CollectionChanged += OnTilesChanged;
         }
 
-        protected abstract void OnTilesChanged(object sender, NotifyCollectionChangedEventArgs e);
-
-        private void OnTilesChangedCommon(object sender, NotifyCollectionChangedEventArgs e)
+        private void InitializeExistedTiles()
         {
-            foreach(var item in e.NewItems)
+            foreach(var tile in _userData.Tiles)
             {
-                if(item is TTile)
+                if(tile is TTile)
                 {
-                    _tiles.Add((TTile)item);
+                    _tiles.Add((TTile)tile);
+                    tile.PropertyChanged += TileDataPropertyChanged;
                 }
             }
+            RefreshAllTiles();
+        }
 
-            foreach (var item in e.OldItems)
+        private void TileDataPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "Data")
             {
-                if (item is TTile)
+                ProvideTileWithValue((TTile)sender);
+            }
+        }
+
+        protected void RefreshAllTiles()
+        {
+            foreach(var tile in _tiles)
+            {
+                ProvideTileWithValue(tile);
+            }
+        }
+
+        protected abstract void ProvideTileWithValue(TTile tile);
+
+        private void OnTilesChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                foreach (var item in e.NewItems)
                 {
-                    if (_tiles.Contains((TTile)item))
+                    if (item is TTile)
                     {
-                        _tiles.Remove((TTile)item);
-                    }                    
+                        _tiles.Add((TTile)item);
+                        ((TTile)item).PropertyChanged += TileDataPropertyChanged;
+                        ProvideTileWithValue((TTile)item);
+                    }
+                }
+            }
+            if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                foreach (var item in e.OldItems)
+                {
+                    if (item is TTile)
+                    {
+                        if (_tiles.Contains((TTile)item))
+                        {
+                            ((TTile)item).PropertyChanged -= TileDataPropertyChanged;
+                            _tiles.Remove((TTile)item);
+                        }
+                    }
                 }
             }
         }
