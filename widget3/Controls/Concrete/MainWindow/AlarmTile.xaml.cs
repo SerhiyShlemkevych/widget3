@@ -12,13 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using widget3.Controls.Abstract.Common;
 
 namespace widget3.Controls.Concrete.MainWindow
 {
     /// <summary>
     /// Interaction logic for AlarmTile.xaml
     /// </summary>
-    public partial class AlarmTile : UserControl
+    public partial class AlarmTile : TileBase
     {
         public AlarmTile()
         {
