@@ -10,6 +10,8 @@ using widget3.ViewModels.Abstract.Common;
 using System.Collections.Specialized;
 using widget3.ViewModels.Concrete.Common;
 using System.Windows.Media;
+using System.Windows;
+using widget3.Commands.Abstract;
 
 namespace widget3.ViewModels.Concrete.MainWindow
 {
@@ -17,78 +19,29 @@ namespace widget3.ViewModels.Concrete.MainWindow
     {
         private IUserDataService _userData;
 
-        private int _rowCount;
-        private int _columnCount;
-        private int _windowWidth;
-        private int _windowHeight;
         private Brush _windowBackground;
         private widget3.Views.Main.MainWindow _window;
 
         public MainWindowViewModel(IUserDataService userData)
         {
             _userData = userData;
-            Tiles = userData.Tiles;
             TileViews = new ObservableCollection<TileBase>();
+            userData.Configuration.CurrentDayChanged += ConfigurationCurrentDayChanged;
             InitializeTiles();
 
+            WindowBackground = Brushes.Transparent;
 
-            WindowHeight = 800;
-            WindowWidth = 1000;
-            WindowBackground = Brushes.BlueViolet;
+            InitializeCommands();
 
             _window = new Views.Main.MainWindow() { DataContext = this };
             _window.Show();
         }
 
-        public int RowCount
+        private void ConfigurationCurrentDayChanged(object sender, EventArgs e)
         {
-            get
+            foreach (var tile in _userData.Tiles)
             {
-                return _rowCount;
-            }
-            set
-            {
-                _rowCount = value;
-                OnPropertyChanged("RowCount");
-            }
-        }
-
-        public int ColumnCount
-        {
-            get
-            {
-                return _columnCount;
-            }
-            set
-            {
-                _columnCount = value;
-                OnPropertyChanged("ColumnCount");
-            }
-        }
-
-        public int WindowWidth
-        {
-            get
-            {
-                return _windowWidth;
-            }
-            set
-            {
-                _windowWidth = value;
-                OnPropertyChanged("WindowWidth");
-            }
-        }
-
-        public int WindowHeight
-        {
-            get
-            {
-                return _windowHeight;
-            }
-            set
-            {
-                _windowHeight = value;
-                OnPropertyChanged("WindowHeight");
+                EvaluateTile(tile);
             }
         }
 
@@ -105,7 +58,13 @@ namespace widget3.ViewModels.Concrete.MainWindow
             }
         }
 
-        public ObservableCollection<TileViewModel> Tiles
+        public DelegateCommand OpenSettingsWindowCommand
+        {
+            get;
+            private set;
+        }
+
+        public DelegateCommand ExitCommand
         {
             get;
             private set;
@@ -127,13 +86,59 @@ namespace widget3.ViewModels.Concrete.MainWindow
 
         private void InitializeTiles()
         {
-            foreach (var tile in Tiles)
+            foreach (var tile in _userData.Tiles)
             {
-                var tileView = tile.CreateTileView();
-                TileViews.Add(tileView);
+                tile.PropertyChanged += TileDayPropertyChanged;
+                EvaluateTile(tile);         
             }
 
-            Tiles.CollectionChanged += TilesCollectionChanged;
+            _userData.Tiles.CollectionChanged += TilesCollectionChanged;
+        }
+
+        private void TileDayPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Days")
+            {
+                EvaluateTile((TileViewModel)sender);
+            }
+        }
+
+        private void EvaluateTile(TileViewModel tile)
+        {
+            var currentDay = _userData.Configuration.CurrentDay;
+            if (tile.Days[currentDay])
+            {
+                if(!TileViews.Any(v=>v.DataContext == tile))
+                {
+                    var tileView = tile.CreateTileView();
+                    TileViews.Add(tileView);
+                }
+            }
+            else
+            {
+                if (TileViews.Any(v => v.DataContext == tile))
+                {
+                    var view = TileViews.First(v => v.DataContext == tile);
+                    TileViews.Remove(view);
+                }
+            }
+        }
+
+        private void Exit()
+        {
+            _userData.Save();
+            App.Current.Shutdown(0);
+        }
+
+        private void OpenSettingsWindow()
+        {
+            Configuration.SettingsWindowVisibility = Visibility.Visible;
+        }
+
+        private void InitializeCommands()
+        {
+            OpenSettingsWindowCommand = new DelegateCommand(OpenSettingsWindow);
+            ExitCommand = new DelegateCommand(Exit);
         }
 
         private void TilesCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -142,16 +147,20 @@ namespace widget3.ViewModels.Concrete.MainWindow
             {
                 foreach (TileViewModel tile in e.NewItems)
                 {
-                    var view = tile.CreateTileView();
-                    TileViews.Add(view);
+                    tile.PropertyChanged += TileDayPropertyChanged;
+                    EvaluateTile(tile);
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Remove)
             {
                 foreach (TileViewModel tile in e.OldItems)
                 {
-                    var view = TileViews.First(v => v.DataContext == tile);
-                    TileViews.Remove(view);
+                    if(TileViews.Any(v=>v.DataContext == tile))
+                    {
+                        var view = TileViews.First(v => v.DataContext == tile);
+                        TileViews.Remove(view);
+                    }
+                    tile.PropertyChanged -= TileDayPropertyChanged;
                 }
             }
         }
