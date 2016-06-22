@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -185,10 +186,17 @@ namespace widget3.Services.Concrete
             var configutarionModel = LoadConfiguration();
             _configuration = _mapper.Map<ConfigurationModel, ConfigurationViewModel>(configutarionModel);
 
+            Type mapper = _mapper.GetType();
+            MethodInfo map = mapper.GetMethods().Where(m => m.Name == "Map" && m.GetParameters().Count() == 2).First();
+
             var tileModels = LoadTileData();
             foreach (var tileModel in tileModels)
             {
-                var tile = _mapper.Map<TileModel, TileViewModel>(tileModel);
+                string typeString = String.Format("{0}{1}{2}", "widget3.ViewModels.Concrete.Common.", tileModel.Type.ToString(), "TileViewModel");
+                Type type = Type.GetType(typeString);
+                var resolvedMap = map.MakeGenericMethod(typeof(TileModel), type);
+                var tile = (TileViewModel)resolvedMap.Invoke(_mapper, new object[] { tileModel, new Action<TileModel, TileViewModel>(MapBackground) });
+                tile.UserData = this;
                 Tiles.Add(tile);
             }
 
@@ -208,7 +216,7 @@ namespace widget3.Services.Concrete
             var tileModels = new List<TileModel>();
             foreach (var tile in Tiles)
             {
-                var tileModel = _mapper.Map<TileViewModel, TileModel>(tile);
+                var tileModel = _mapper.Map<TileViewModel, TileModel>(tile, MapBackBackground);
                 tileModels.Add(tileModel);
             }
             SaveTileData(tileModels);
@@ -220,6 +228,16 @@ namespace widget3.Services.Concrete
                 backgroundModels.Add(backgroundModel);
             }
             SaveBackgrounds(backgroundModels);
+        }
+
+        private void MapBackground(TileModel model, TileViewModel viewModel)
+        {
+            viewModel.Background = _mapper.Map<BackgroundModel, BackgroundViewModel>(model.Background);
+        }
+
+        private void MapBackBackground(TileViewModel viewModel, TileModel model)
+        {
+            model.Background = _mapper.Map<BackgroundViewModel, BackgroundModel>(viewModel.Background);
         }
     }
 }
