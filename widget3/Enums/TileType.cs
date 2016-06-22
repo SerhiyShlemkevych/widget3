@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace widget3.Enums
 {
-    public enum TileType { Task, Alarm, Timer, Weather, DateTime };
+    public enum TileType { Default = 0, Task, Alarm, Timer, Weather, DateTime };
 }
