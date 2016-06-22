@@ -35,8 +35,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gat.Controls.OpenDialog, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenDialog.1.1.1\lib\net45\Gat.Controls.OpenDialog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Infragistics.Themes.MetroDark.Wpf.1.0.0\lib\net40\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Infragistics.Themes.MetroDark.Wpf.1.0.0\lib\net40\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -49,6 +61,34 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Infragistics.Themes.MetroDark.Wpf.1.0.0\lib\net40\WPFToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -59,6 +99,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Code\CommonCreateTileSteps.cs" />
+    <Compile Include="Code\CommonEditInfos.cs" />
+    <Compile Include="Code\CreateTileStep.cs" />
+    <Compile Include="Code\TileEditInfo.cs" />
+    <Compile Include="Commands\Abstract\DelegateCommandGeneric.cs" />
+    <Compile Include="Commands\Abstract\DelegateCommand.cs" />
     <Compile Include="Controls\Concrete\MainWindow\AlarmTile.xaml.cs">
       <DependentUpon>AlarmTile.xaml</DependentUpon>
     </Compile>
@@ -72,25 +118,69 @@
     <Compile Include="Controls\Concrete\MainWindow\WeatherTile.xaml.cs">
       <DependentUpon>WeatherTile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Concrete\SettingsWindow\BackgroundTile.xaml.cs">
+      <DependentUpon>BackgroundTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BackgroundConverter.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Enums\BackgroundType.cs" />
     <Compile Include="Enums\TileType.cs" />
     <Compile Include="Models\BackgroundModel.cs" />
     <Compile Include="Models\ConfigurationModel.cs" />
     <Compile Include="Models\TileModel.cs" />
     <Compile Include="Services\Abstract\IMapperService.cs" />
+    <Compile Include="Services\Abstract\ITileDataProvider.cs" />
     <Compile Include="Services\Abstract\TileDataProvider.cs" />
     <Compile Include="Services\Abstract\IUserDataService.cs" />
     <Compile Include="Services\Concrete\LocalUserDataService.cs" />
     <Compile Include="Services\Concrete\ReflectionMapper.cs" />
+    <Compile Include="Services\Concrete\TaskTileDataProvider.cs" />
     <Compile Include="ViewModels\Abstract\Common\TileViewModel.cs" />
     <Compile Include="ViewModels\Abstract\Common\ViewModel.cs" />
+    <Compile Include="ViewModels\Abstract\SettingsWindow\ChildViewModel.cs" />
+    <Compile Include="ViewModels\Abstract\SettingsWindow\ParentViewModel.cs" />
     <Compile Include="ViewModels\Concrete\Common\BackgroundViewModel.cs" />
     <Compile Include="ViewModels\Concrete\Common\ConfigurationViewModel.cs" />
     <Compile Include="Controls\Abstract\Common\TileBase.cs" />
     <Compile Include="ViewModels\Concrete\Common\TaskTileViewModel.cs" />
     <Compile Include="ViewModels\Concrete\MainWindow\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Concrete\SettingsWindow\CommonSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Concrete\SettingsWindow\CreateTileViewModel.cs" />
+    <Compile Include="ViewModels\Concrete\SettingsWindow\EditTilesViewModel.cs" />
+    <Compile Include="ViewModels\Concrete\SettingsWindow\FavoriteBackgroundsViewModel.cs" />
+    <Compile Include="ViewModels\Concrete\SettingsWindow\SettingsWindowViewModel.cs" />
     <Compile Include="Views\Main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CommonSettingsPage.xaml.cs">
+      <DependentUpon>CommonSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CreateTilePages\SelectBackgroundPage.xaml.cs">
+      <DependentUpon>SelectBackgroundPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CreateTilePages\SelectDaysPage.xaml.cs">
+      <DependentUpon>SelectDaysPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CreateTilePages\SelectSizePage.xaml.cs">
+      <DependentUpon>SelectSizePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CreateTilePages\SelectTextPage.xaml.cs">
+      <DependentUpon>SelectTextPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CreateTilePages\SelectTypePage.xaml.cs">
+      <DependentUpon>SelectTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CteateTilePage.xaml.cs">
+      <DependentUpon>CteateTilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\EditTilesPage.xaml.cs">
+      <DependentUpon>EditTilesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\FavoriteBackgroundsPage.xaml.cs">
+      <DependentUpon>FavoriteBackgroundsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +201,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,7 +213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\Abstract\MainWindow\" />
-    <Folder Include="ViewModels\Abstract\SettingsWindow\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\Concrete\MainWindow\AlarmTile.xaml">
@@ -141,7 +231,75 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Concrete\SettingsWindow\BackgroundTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Local\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\MetroDark\MetroDark.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MetroDark\MetroDark.MSControls.Toolkit.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MetroDark\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MetroDark\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MetroDark\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Main\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\CommonSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\CreateTilePages\SelectBackgroundPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\CreateTilePages\SelectDaysPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\CreateTilePages\SelectSizePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\CreateTilePages\SelectTextPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\CreateTilePages\SelectTypePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\CteateTilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\EditTilesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\FavoriteBackgroundsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
