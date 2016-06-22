@@ -27,7 +27,7 @@ namespace widget3.Models
             set;
         }
 
-        public string BackgroundColor
+        public BackgroundModel Background
         {
             get;
             set;
@@ -44,5 +44,17 @@ namespace widget3.Models
             get;
             set;
         } 
+
+        public int Row
+        {
+            get;
+            set;
+        }
+
+        public int Column
+        {
+            get;
+            set;
+        }
     }
 }
