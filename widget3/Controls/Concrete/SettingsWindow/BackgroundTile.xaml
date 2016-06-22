@@ -1,0 +1,20 @@
+﻿<asbtract:TileBase x:Class="widget3.Controls.Concrete.SettingsWindow.BackgroundTile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+             xmlns:asbtract="clr-namespace:widget3.Controls.Abstract.Common"
+             xmlns:converters="clr-namespace:widget3.Converters"
+             xmlns:local="clr-namespace:widget3.Controls.Concrete.SettingsWindow"
+             Width="40"
+             Height="40"
+             mc:Ignorable="d"
+                   Cursor="Hand"
+             Margin="5"
+             BorderThickness="{Binding BorderThickness}"
+             d:DesignHeight="300" d:DesignWidth="300"
+                   Background="{Binding BackgroundData, Converter={StaticResource x:ResourceKey=BackgroundConverter}}"
+             Command="{Binding Command}" CommandParameter="{Binding CommandParameter}">
+
+</asbtract:TileBase>
