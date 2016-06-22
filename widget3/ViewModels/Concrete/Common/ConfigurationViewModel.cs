@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using widget3.ViewModels.Abstract.Common;
 
 namespace widget3.ViewModels.Concrete.Common
@@ -13,6 +14,94 @@ namespace widget3.ViewModels.Concrete.Common
         private int _tileMargin;
         private int _fontSize;
         private int _subFontSize;
+        private Visibility _settingsWindowVisibility;
+
+        private int _currentDay;
+
+        public ConfigurationViewModel()
+        {
+            SettingsWindowVisibility = Visibility.Hidden;
+            ChangeCurrentDay((int)DateTime.Now.DayOfWeek);
+            TileHeights = new List<int>() { 1, 2, 3, 4 };
+            TileWidths = new List<int>() { 1, 2, 3, 4 };
+        }
+
+        public List<int> TileHeights
+        {
+            get;
+            private set;
+        }
+
+        public List<int> TileWidths
+        {
+            get;
+            private set;
+        }
+
+        public int CurrentDay
+        {
+            get
+            {
+                return _currentDay;
+            }
+        }
+
+        public Visibility SettingsWindowVisibility
+        {
+            get
+            {
+                return _settingsWindowVisibility;
+            }
+            set
+            {
+                _settingsWindowVisibility = value;
+                OnPropertyChanged("SettingsWindowVisibility");
+            }
+        }
+
+        public int RowCount
+        {
+            get
+            {
+                return WindowHeight / TileSize;
+            }
+            set
+            {
+            }
+        }
+
+        public int ColumnCount
+        {
+            get
+            {
+                return WindowWidth / TileSize;
+            }
+            set
+            {
+            }
+        }
+
+        public int WindowWidth
+        {
+            get
+            {
+                return (int)SystemParameters.PrimaryScreenWidth;
+            }
+            set
+            {
+            }
+        }
+
+        public int WindowHeight
+        {
+            get
+            {
+                return (int)SystemParameters.PrimaryScreenHeight;
+            }
+            set
+            {
+            }
+        }
 
         public int FontSize
         {
@@ -50,6 +139,8 @@ namespace widget3.ViewModels.Concrete.Common
             {
                 _tileSize = value;
                 OnPropertyChanged("TileSize");
+                OnPropertyChanged("RowCount");
+                OnPropertyChanged("ColumnCount");
             }
         }
 
@@ -63,6 +154,22 @@ namespace widget3.ViewModels.Concrete.Common
             {
                 _tileMargin = value;
                 OnPropertyChanged("TileMargin");
+            }
+        }
+
+        public event Action<object, EventArgs> CurrentDayChanged;
+
+        public void ChangeCurrentDay(int day)
+        {
+            if (day < 0 || day > 6)
+            {
+                throw new ArgumentOutOfRangeException("day");
+            }
+
+            _currentDay = day;
+            if (CurrentDayChanged != null)
+            {
+                CurrentDayChanged(this, EventArgs.Empty);
             }
         }
     }
