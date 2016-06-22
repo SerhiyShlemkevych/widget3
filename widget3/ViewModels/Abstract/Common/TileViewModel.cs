@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using widget3.Code;
 using widget3.Controls.Abstract.Common;
+using widget3.Converters;
 using widget3.Enums;
 using widget3.Services.Abstract;
 using widget3.ViewModels.Concrete.Common;
@@ -22,15 +25,146 @@ namespace widget3.ViewModels.Abstract.Common
         private int _column;
         private BackgroundViewModel _background;
         private TileType _type;
-        private object _data;
         private ICommand _command;
         private object _commandParameter;
+        private Thickness _borderThickness;
+        private object _data;
+        private bool[] _days;
 
-        private IUserDataService _userData;
-
-        public TileViewModel(IUserDataService userData)
+        public TileViewModel()
         {
-            _userData = userData;
+            Days = new bool[7];
+            SetDefaultCommand();
+        }
+
+        public bool[] Days
+        {
+            get
+            {
+                return _days;
+            }
+            set
+            {
+                _days = value;
+                OnPropertyChanged("Days");
+            }
+        }
+
+        public bool Monday
+        {
+            get
+            {
+                return Days[1];
+            }
+            set
+            {
+                Days[1] = value;
+                OnPropertyChanged("Monday");
+                OnPropertyChanged("Days");
+            }
+        }
+
+        public bool Tuesday
+        {
+            get
+            {
+                return Days[2];
+            }
+            set
+            {
+                Days[2] = value;
+                OnPropertyChanged("Tuesday");
+                OnPropertyChanged("Days");
+            }
+        }
+
+        public bool Wednesday
+        {
+            get
+            {
+                return Days[3];
+            }
+            set
+            {
+                Days[3] = value;
+                OnPropertyChanged("Wednesday");
+                OnPropertyChanged("Days");
+            }
+        }
+
+        public bool Thursday
+        {
+            get
+            {
+                return Days[4];
+            }
+            set
+            {
+                Days[4] = value;
+                OnPropertyChanged("Thursday");
+                OnPropertyChanged("Days");
+            }
+        }
+
+        public bool Friday
+        {
+            get
+            {
+                return Days[5];
+            }
+            set
+            {
+                Days[5] = value;
+                OnPropertyChanged("Friday");
+                OnPropertyChanged("Days");
+            }
+        }
+
+        public bool Saturday
+        {
+            get
+            {
+                return Days[6];
+            }
+            set
+            {
+                Days[6] = value;
+                OnPropertyChanged("Saturday");
+                OnPropertyChanged("Days");
+            }
+        }
+
+        public bool Sunday
+        {
+            get
+            {
+                return Days[0];
+            }
+            set
+            {
+                Days[0] = value;
+                OnPropertyChanged("Sunday");
+                OnPropertyChanged("Days");
+            }
+        }
+
+        public IUserDataService UserData
+        {
+            get;
+            set;
+        }
+
+        public Thickness BorderThickness
+        {
+            get
+            {
+                return _borderThickness;
+            }
+            set
+            {
+                _borderThickness = value;
+                OnPropertyChanged("BorderThickness");
+            }
         }
 
         public string Text
@@ -70,29 +204,19 @@ namespace widget3.ViewModels.Abstract.Common
                 OnPropertyChanged("Width");
             }
         }
-
-        //public int Width
-        //{
-        //    get
-        //    {
-        //        return WidthMultipler * App.SharedData.Configuration.TileSize;
-        //    }
-        //}
-
-        //public int Height
-        //{
-        //    get
-        //    {
-        //        return HeightMultipler * App.SharedData.Configuration.TileSize;
-        //    }
-        //}
-
-
         public object Data
         {
-            get { return _data; }
-            set { _data = value; OnPropertyChanged("Data"); }
+            get
+            {
+                return _data;
+            }
+            set
+            {
+                _data = value;
+                OnPropertyChanged("Data");
+            }
         }
+
         public BackgroundViewModel Background
         {
             get
@@ -171,35 +295,44 @@ namespace widget3.ViewModels.Abstract.Common
             }
         }
 
+        public void Select()
+        {
+            BorderThickness = new Thickness(5);
+        }
+
+        public void Deselect()
+        {
+            BorderThickness = new Thickness(0);
+        }
+
+        public abstract void SetDefaultCommand();
+
         protected virtual void SetBindings(TileBase tileView)
         {
-            Binding background = new Binding("Background.BackgroundData");
-            Binding text = new Binding("Text");
-            Binding command = new Binding("Command");
-            Binding commandParaameter = new Binding("CommandParameter");
-            Binding width = new Binding("Width");
-            Binding height = new Binding("Height");
-            tileView.SetBinding(TileBase.WidthProperty, width);
-            tileView.SetBinding(TileBase.HeightProperty, height);
-            tileView.SetBinding(TileBase.BackgroundProperty, background);
-            tileView.SetBinding(TileBase.TextProperty, text);
-            tileView.SetBinding(TileBase.CommandProperty, command);
-            tileView.SetBinding(TileBase.CommandParameterProperty, commandParaameter);
-
             Binding fontSize = new Binding("FontSize");
-            fontSize.Source = _userData.Configuration;
+            fontSize.Source = UserData.Configuration;
             tileView.SetBinding(TileBase.FontSizeProperty, fontSize);
 
             Binding subFontSize = new Binding("SubFontSize");
-            subFontSize.Source = _userData.Configuration;
+            subFontSize.Source = UserData.Configuration;
             tileView.SetBinding(TileBase.SubFontSizeProperty, subFontSize);
 
             Binding margin = new Binding("TileMargin");
-            margin.Source = _userData.Configuration;
+            margin.Source = UserData.Configuration;
             tileView.SetBinding(TileBase.MarginProperty, margin);
         }
 
+        public abstract IEnumerable<TileEditPropertyInfo> GetEditInfo();
+
+        public abstract IEnumerable<CreateTileStep> GetCreateSteps();
+
         public abstract TileBase CreateTileView();
+
+        //return new TileEditInfo()
+        //{
+        //    EditLabels = new List<string>() { "Background" },
+        //        EditControls = new List<Control>() { new ComboBox() { DataContext = this } }
+        //    };
     }
 }
 
