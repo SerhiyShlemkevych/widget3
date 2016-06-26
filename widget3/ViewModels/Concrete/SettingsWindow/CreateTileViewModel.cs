@@ -182,6 +182,7 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
         public override void Activate()
         {
             base.Activate();
+            SelectedType = 0;
             InitializeBackgroundViews();
             _currentStepIndex = 0;
             SetSteps(new List<CreateTileStep>());
@@ -191,6 +192,7 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
         public override void Deactivate()
         {
             base.Deactivate();
+            SelectedType = 0;
             _tile = null;
         }
 
@@ -211,6 +213,11 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
 
         private void OnTileTypeChanged()
         {
+            if(SelectedType == 0)
+            {
+                return;
+            }
+
             string typeString = String.Format("{0}{1}{2}", "widget3.ViewModels.Concrete.Common.", SelectedType.ToString(), "TileViewModel");
             Type type = Type.GetType(typeString);
             Tile = (TileViewModel)Activator.CreateInstance(type);
@@ -219,7 +226,15 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
             var createSteps = (IEnumerable<CreateTileStep>)getWizardPagesMethod.Invoke(Tile, null);
             foreach (var step in createSteps)
             {
-                step.Page.DataContext = this;
+                if (step.PageViewModel == null)
+                {
+                    step.Page.DataContext = this;
+                }
+                else
+                {
+                    var viewModel = Activator.CreateInstance(step.PageViewModel, Tile);
+                    step.Page.DataContext = viewModel;
+                }
             }
             SetSteps(createSteps);
             Tile.PropertyChanged += TilePropertyChanged;
