@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using widget3.Code;
 using widget3.Enums;
 
 namespace widget3.Models
 {
     public class TileModel
     {
-        public object Data
+        public double Transperency
+        {
+            get;
+            set;
+        }
+
+        public TileData Data
         {
             get;
             set;
