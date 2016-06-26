@@ -17,6 +17,7 @@ namespace widget3.Controls.Abstract.Common
             MouseUp += TileBaseMouseUp;
             SetResourceReference(TileBase.BorderBrushProperty, "SelectedBorderColor");
             Foreground = Brushes.White;
+            RenderOptions.SetBitmapScalingMode(this, BitmapScalingMode.Fant);
         }
 
         private void TileBaseMouseUp(object sender, MouseButtonEventArgs e)
@@ -40,6 +41,9 @@ namespace widget3.Controls.Abstract.Common
         public static readonly DependencyProperty CommandTargetProperty =
             DependencyProperty.Register("CommandTarget", typeof(IInputElement), typeof(TileBase), new UIPropertyMetadata(null));
 
+        public static readonly DependencyProperty FontTransperencyProperty =
+            DependencyProperty.Register("FontTransperency", typeof(double), typeof(TileBase), new UIPropertyMetadata(null));
+
 
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(TileBase));
         public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof(ICommand), typeof(TileBase));
@@ -51,6 +55,12 @@ namespace widget3.Controls.Abstract.Common
         {
             get { return (IInputElement)GetValue(CommandTargetProperty); }
             set { SetValue(CommandTargetProperty, value); }
+        }
+
+        public double FontTransperency
+        {
+            get { return (double)GetValue(FontTransperencyProperty); }
+            set { SetValue(FontTransperencyProperty, value); }
         }
 
         public string Text
