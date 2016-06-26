@@ -36,6 +36,19 @@ namespace widget3.Code
             }
         }
 
+        public static CreateTileStep TimeStep
+        {
+            get
+            {
+                return new CreateTileStep()
+                {
+                    PageHeader = "Enter time",
+                    Page = new SelectTimePage(),
+                    Validate = (tile) => tile != null && tile.Data != null
+                };
+            }
+        }
+
         public static CreateTileStep SizeStep
         {
             get
