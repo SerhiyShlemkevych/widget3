@@ -27,5 +27,11 @@ namespace widget3.Code
             get;
             set;
         }
+
+        public Type PageViewModel
+        {
+            get;
+            set;
+        }
     }
 }
