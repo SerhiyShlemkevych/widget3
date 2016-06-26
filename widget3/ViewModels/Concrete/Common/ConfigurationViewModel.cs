@@ -16,12 +16,26 @@ namespace widget3.ViewModels.Concrete.Common
         private int _subFontSize;
         private double _fontTransperency;
         private int _currentDay;
+        private bool _alignToRightSide;
 
         public ConfigurationViewModel()
         {
             ChangeCurrentDay((int)DateTime.Now.DayOfWeek);
             TileHeights = new List<int>() { 1, 2, 3, 4 };
             TileWidths = new List<int>() { 1, 2, 3, 4 };
+        }
+
+        public bool AlignToRightSide
+        {
+            get
+            {
+                return _alignToRightSide;
+            }
+            set
+            {
+                _alignToRightSide = value;
+                OnPropertyChanged("AlignToRightSide");
+            }
         }
 
         public double FontTransperency

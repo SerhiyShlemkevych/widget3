@@ -8,6 +8,12 @@ namespace widget3.Models
 {
     public class ConfigurationModel
     {
+        public bool AlignToRightSide
+        {
+            get;
+            set;
+        }
+
         public double FontTransperency
         {
             get;
