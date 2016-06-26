@@ -14,7 +14,7 @@
              Margin="5"
              BorderThickness="{Binding BorderThickness}"
              d:DesignHeight="300" d:DesignWidth="300"
-                   Background="{Binding BackgroundData, Converter={StaticResource x:ResourceKey=BackgroundConverter}}"
+                   Background="{Binding BackgroundBrush}"
              Command="{Binding Command}" CommandParameter="{Binding CommandParameter}">
 
 </asbtract:TileBase>

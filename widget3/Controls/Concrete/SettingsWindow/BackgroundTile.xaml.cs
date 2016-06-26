@@ -24,7 +24,6 @@ namespace widget3.Controls.Concrete.SettingsWindow
     {
         public BackgroundTile()
         {
-            Resources.Add("BackgroundConverter", new BackgroundConverter());
             InitializeComponent();
         }
     }
