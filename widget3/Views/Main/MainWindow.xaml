@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:widget3.Views.Main"
         xmlns:extensions="clr-namespace:widget3.Controls.Concrete.MainWindow"
         xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        ShowInTaskbar="False"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -24,7 +25,5 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
-        <Button Content="Settings" Command="{Binding OpenSettingsWindowCommand}" Width="50" Height="30" Margin="708,463,10,42"/>
-        <Button Content="Exit" Command="{Binding ExitCommand}" Width="50" Height="30" Margin="708,498,10,7"/>
     </Grid>
 </Window>
