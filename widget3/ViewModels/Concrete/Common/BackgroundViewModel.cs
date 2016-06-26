@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using widget3.Controls.Abstract.Common;
 using widget3.Controls.Concrete.SettingsWindow;
 using widget3.Converters;
@@ -102,6 +104,25 @@ namespace widget3.ViewModels.Concrete.Common
         {
             var view = new BackgroundTile() { DataContext = this };
             return view;
+        }
+
+        public Brush BackgroundBrush
+        {
+            get
+            {
+
+                if (Type == BackgroundType.SolidColor)
+                {
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString(BackgroundData));
+                }
+                else
+                {
+                    return new ImageBrush(new BitmapImage(new Uri(BackgroundData, UriKind.Absolute)));
+                }
+            }
+            set
+            {
+            }
         }
     }
 }
