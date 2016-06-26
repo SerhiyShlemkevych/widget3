@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using widget3.Controls.Abstract.Common;
+using widget3.Converters;
 
 namespace widget3.Controls.Concrete.MainWindow
 {
@@ -23,6 +24,7 @@ namespace widget3.Controls.Concrete.MainWindow
     {
         public AlarmTile()
         {
+            this.Resources.Add("BooleanToVisibilityConverter", new BooleanToVisibilityConverter());
             InitializeComponent();
         }
     }
