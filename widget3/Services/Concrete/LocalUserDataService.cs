@@ -65,6 +65,15 @@ namespace widget3.Services.Concrete
             }
         }
 
+        private T Deserialize<T>(string serializedData, Type[] types)
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(T), types);
+            using (TextReader tr = new StringReader(serializedData))
+            {
+                return (T)deserializer.Deserialize(tr);
+            }
+        }
+
         private string Serialize(object obj)
         {
             string serializedData = string.Empty;
@@ -72,6 +81,23 @@ namespace widget3.Services.Concrete
             using (StringWriter sw = new StringWriter())
             {
                 serializer.Serialize(sw, obj);
+                serializedData = sw.ToString();
+            }
+            return serializedData;
+        }
+
+        private string SerializeTiles(IEnumerable<TileModel> tiles)
+        {
+            HashSet<Type> dataTypes = new HashSet<Type>();
+            foreach(var tile in tiles)
+            {
+                dataTypes.Add(tile.Data.GetType());
+            }
+            string serializedData = string.Empty;
+            XmlSerializer serializer = new XmlSerializer(tiles.GetType(), dataTypes.ToArray());
+            using (StringWriter sw = new StringWriter())
+            {
+                serializer.Serialize(sw, tiles);
                 serializedData = sw.ToString();
             }
             return serializedData;
@@ -121,15 +147,30 @@ namespace widget3.Services.Concrete
 
         private IEnumerable<TileModel> LoadTileData()
         {
-            var path = _basePath + "tiles.xml";
+            var path = _basePath + "tileDataTypes.xml";
             if (!File.Exists(path))
             {
                 return new TileModel[0];
             }
+
+            Type[] tileDataTypes = null;
+
             using (StreamReader file = new StreamReader(path))
             {
                 var rawData = file.ReadToEnd();
-                var result = Deserialize<List<TileModel>>(rawData);
+                tileDataTypes = Deserialize<string[]>(rawData).Select(t=>Type.GetType(t)).ToArray();
+
+                if (tileDataTypes == null)
+                {
+                    tileDataTypes = new Type[0];
+                }
+            }
+
+            path = _basePath + "tiles.xml";
+            using (StreamReader file = new StreamReader(path))
+            {
+                var rawData = file.ReadToEnd();
+                var result = Deserialize<List<TileModel>>(rawData, tileDataTypes);
 
                 if (result == null)
                 {
@@ -165,7 +206,19 @@ namespace widget3.Services.Concrete
             var path = _basePath + "tiles.xml";
             using (StreamWriter file = new StreamWriter(path))
             {
-                string serializedData = Serialize(tiles);
+                string serializedData = SerializeTiles(tiles);
+                file.Write(serializedData);
+            }
+
+            path = _basePath + "tileDataTypes.xml";
+            HashSet<Type> tileTypes = new HashSet<Type>();
+            foreach (var tile in tiles)
+            {
+                tileTypes.Add(tile.Data.GetType());
+            }
+            using (StreamWriter file = new StreamWriter(path))
+            {
+                string serializedData = Serialize(tileTypes.Select(t=>t.FullName).ToArray());
                 file.Write(serializedData);
             }
         }
