@@ -21,15 +21,26 @@ namespace widget3.ViewModels.Concrete.MainWindow
 
         private Brush _windowBackground;
         private widget3.Views.Main.MainWindow _window;
+        private Thickness _gridMargin;
 
         public MainWindowViewModel(IUserDataService userData)
         {
             _userData = userData;
             TileViews = new ObservableCollection<TileBase>();
             userData.Configuration.CurrentDayChanged += ConfigurationCurrentDayChanged;
+            userData.Configuration.PropertyChanged += ConfigurationPropertyChanged;
             InitializeTiles();
 
             WindowBackground = Brushes.Transparent;
+            if (Configuration.AlignToRightSide)
+            {
+                var differ = Configuration.WindowWidth % (Configuration.TileSize * Configuration.ColumnCount);
+                GridMargin = new Thickness(differ, 0, 0, 0);
+            }
+            else
+            {
+                GridMargin = new Thickness(0);
+            }
 
             InitializeCommands();
 
@@ -37,11 +48,40 @@ namespace widget3.ViewModels.Concrete.MainWindow
             _window.Show();
         }
 
+        private void ConfigurationPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "AlignToRightSide" || e.PropertyName == "TileSize")
+            {
+                if (Configuration.AlignToRightSide)
+                {
+                    var differ = Configuration.WindowWidth % (Configuration.TileSize * Configuration.ColumnCount);
+                    GridMargin = new Thickness(differ, 0, 0, 0);
+                }
+                else
+                {
+                    GridMargin = new Thickness(0);
+                }
+            }
+        }
+
         private void ConfigurationCurrentDayChanged(object sender, EventArgs e)
         {
             foreach (var tile in _userData.Tiles)
             {
                 EvaluateTile(tile);
+            }
+        }
+
+        public Thickness GridMargin
+        {
+            get
+            {
+                return _gridMargin;
+            }
+            set
+            {
+                _gridMargin = value;
+                OnPropertyChanged("GridMargin");
             }
         }
 

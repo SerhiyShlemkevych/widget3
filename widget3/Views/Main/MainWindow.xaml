@@ -15,7 +15,7 @@
         Title="MainWindow" Height="{Binding Path=Configuration.WindowHeight, Mode=TwoWay}" Width="{Binding Path=Configuration.WindowWidth, Mode=TwoWay}"
         Background="{Binding WindowBackground}"
         >
-    <Grid>
+    <Grid Margin="{Binding GridMargin}">
         <ItemsControl ItemsSource="{Binding TileViews}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
