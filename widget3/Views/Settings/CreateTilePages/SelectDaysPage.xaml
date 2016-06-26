@@ -27,21 +27,21 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" HorizontalContentAlignment="Center" Content="Monday" Padding="2" FontSize="20"/>
-            <Label Grid.Column="1" HorizontalContentAlignment="Center" Content="Tuestday" Padding="2" FontSize="20"/>
-            <Label Grid.Column="2" HorizontalContentAlignment="Center" Content="Wednesday" Padding="2" FontSize="20"/>
-            <Label Grid.Column="3" HorizontalContentAlignment="Center" Content="Thursday" Padding="2" FontSize="20"/>
-            <Label Grid.Column="4" HorizontalContentAlignment="Center" Content="Friday" Padding="2" FontSize="20"/>
-            <Label Grid.Column="5" HorizontalContentAlignment="Center" Content="Saturday" Padding="2" FontSize="20"/>
-            <Label Grid.Column="6" HorizontalContentAlignment="Center" Content="Sunday" Padding="2" FontSize="20"/>
+            <Label Style="{DynamicResource LabelStyle}" Grid.Column="0" HorizontalContentAlignment="Center" Content="Monday" Padding="2" FontSize="20"/>
+            <Label Style="{DynamicResource LabelStyle}" Grid.Column="1" HorizontalContentAlignment="Center" Content="Tuestday" Padding="2" FontSize="20"/>
+            <Label Style="{DynamicResource LabelStyle}" Grid.Column="2" HorizontalContentAlignment="Center" Content="Wednesday" Padding="2" FontSize="20"/>
+            <Label Style="{DynamicResource LabelStyle}" Grid.Column="3" HorizontalContentAlignment="Center" Content="Thursday" Padding="2" FontSize="20"/>
+            <Label Style="{DynamicResource LabelStyle}" Grid.Column="4" HorizontalContentAlignment="Center" Content="Friday" Padding="2" FontSize="20"/>
+            <Label Style="{DynamicResource LabelStyle}" Grid.Column="5" HorizontalContentAlignment="Center" Content="Saturday" Padding="2" FontSize="20"/>
+            <Label Style="{DynamicResource LabelStyle}" Grid.Column="6" HorizontalContentAlignment="Center" Content="Sunday" Padding="2" FontSize="20"/>
 
-            <CheckBox Grid.Column="0" Grid.Row="1" IsChecked="{Binding Path=Tile.Monday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Column="1" Grid.Row="1" IsChecked="{Binding Path=Tile.Tuesday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Column="2" Grid.Row="1" IsChecked="{Binding Path=Tile.Wednesday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Column="3" Grid.Row="1" IsChecked="{Binding Path=Tile.Thursday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Column="4" Grid.Row="1" IsChecked="{Binding Path=Tile.Friday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Column="5" Grid.Row="1" IsChecked="{Binding Path=Tile.Saturday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Column="6" Grid.Row="1" IsChecked="{Binding Path=Tile.Sunday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <CheckBox Style="{DynamicResource CheckBoxStyle}" Grid.Column="0" Grid.Row="1" IsChecked="{Binding Path=Tile.Monday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <CheckBox Style="{DynamicResource CheckBoxStyle}" Grid.Column="1" Grid.Row="1" IsChecked="{Binding Path=Tile.Tuesday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <CheckBox Style="{DynamicResource CheckBoxStyle}" Grid.Column="2" Grid.Row="1" IsChecked="{Binding Path=Tile.Wednesday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <CheckBox Style="{DynamicResource CheckBoxStyle}" Grid.Column="3" Grid.Row="1" IsChecked="{Binding Path=Tile.Thursday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <CheckBox Style="{DynamicResource CheckBoxStyle}" Grid.Column="4" Grid.Row="1" IsChecked="{Binding Path=Tile.Friday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <CheckBox Style="{DynamicResource CheckBoxStyle}" Grid.Column="5" Grid.Row="1" IsChecked="{Binding Path=Tile.Saturday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <CheckBox Style="{DynamicResource CheckBoxStyle}" Grid.Column="6" Grid.Row="1" IsChecked="{Binding Path=Tile.Sunday}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>
 </Page>

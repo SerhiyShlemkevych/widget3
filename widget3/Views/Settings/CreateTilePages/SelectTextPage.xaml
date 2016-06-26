@@ -9,9 +9,9 @@
       Title="SelectTextPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Text="{Binding Path=Tile.Data, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+        <TextBox Style="{DynamicResource TextBoxStyle}" Text="{Binding Path=Tile.Data.Text, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
     </Grid>
 </Page>
