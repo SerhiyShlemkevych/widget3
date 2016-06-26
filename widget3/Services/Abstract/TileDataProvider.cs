@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Specialized;
 using widget3.ViewModels.Abstract.Common;
+using System.ComponentModel;
 
 namespace widget3.Services.Abstract
 {
@@ -33,15 +34,15 @@ namespace widget3.Services.Abstract
                     tile.PropertyChanged += TileDataPropertyChanged;
                 }
             }
-            RefreshAllTiles();
         }
 
-        private void TileDataPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void TileDataPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == "Data")
             {
                 ProvideTileWithValue((TTile)sender);
             }
+            OnTilePropertyChanged(sender, e);            
         }
 
         protected void RefreshAllTiles()
@@ -50,6 +51,19 @@ namespace widget3.Services.Abstract
             {
                 ProvideTileWithValue(tile);
             }
+        }
+
+        protected ObservableCollection<TTile> Tiles
+        {
+            get
+            {
+                return _tiles;
+            }
+        }
+
+        protected virtual void OnTilePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
         }
 
         protected abstract void ProvideTileWithValue(TTile tile);
