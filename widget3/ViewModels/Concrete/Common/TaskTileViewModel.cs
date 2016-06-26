@@ -60,6 +60,7 @@ namespace widget3.ViewModels.Concrete.Common
             return new List<TileEditPropertyInfo>()
             {
                 CommonEditPropertyInfos.Background,
+                CommonEditPropertyInfos.Transperency,
                 CommonEditPropertyInfos.Width,
                 CommonEditPropertyInfos.Height,
                 CommonEditPropertyInfos.Text
