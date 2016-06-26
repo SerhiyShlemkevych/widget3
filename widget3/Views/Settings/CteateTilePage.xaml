@@ -13,9 +13,9 @@
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Label Content="{Binding Path=CurrentStep.PageHeader}" FontSize="25" Margin="5"/>
+        <Label Style="{DynamicResource LabelStyle}" Content="{Binding Path=CurrentStep.PageHeader}" FontSize="25" Margin="5"/>
         <Frame Grid.Row="1" Content="{Binding Path=CurrentStep.Page}"/>
-        <Button Content="{Binding LeftButtonContent}" Command="{Binding LeftButtonCommand}" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="30" HorizontalAlignment="Left" Width="75"/>
-        <Button Content="{Binding RightButtonContent}" Command="{Binding RightButtonCommand, PresentationTraceSources.TraceLevel=High}"  Margin="0,10,10,0" Grid.Row="2" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="75"/>
+        <Button Style="{DynamicResource ButtonStyle}" Content="{Binding LeftButtonContent}" Command="{Binding LeftButtonCommand}" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="30" HorizontalAlignment="Left" Width="75"/>
+        <Button Style="{DynamicResource ButtonStyle}" Content="{Binding RightButtonContent}" Command="{Binding RightButtonCommand, PresentationTraceSources.TraceLevel=High}"  Margin="0,10,10,0" Grid.Row="2" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="75"/>
     </Grid>
 </Page>
