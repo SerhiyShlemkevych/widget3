@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using widget3.Code;
 using widget3.Controls.Abstract.Common;
 using widget3.Converters;
@@ -28,13 +31,48 @@ namespace widget3.ViewModels.Abstract.Common
         private ICommand _command;
         private object _commandParameter;
         private Thickness _borderThickness;
-        private object _data;
+        private TileData _data;
         private bool[] _days;
+        private double _transperency = 100;
+        Regex colorRegex = new Regex(@"\#.{8}$");
 
         public TileViewModel()
         {
             Days = new bool[7];
+            Data = new TileData();
             SetDefaultCommand();
+        }
+
+        public Brush BackgroundBrush
+        {
+            get
+            {
+               
+                if (Background.Type == BackgroundType.SolidColor)
+                {
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString(Background.BackgroundData));
+                }
+                else
+                {
+                    return new ImageBrush(GetCroppedImage());
+                }
+            }
+            set
+            {
+            }
+        }
+
+        public double Transperency
+        {
+            get
+            {
+                return _transperency;
+            }
+            set
+            {
+                _transperency = value;
+                OnPropertyChanged("Transperency");
+            }
         }
 
         public bool[] Days
@@ -190,6 +228,7 @@ namespace widget3.ViewModels.Abstract.Common
                 _height = value;
 
                 OnPropertyChanged("Height");
+                if (Background?.Type == BackgroundType.Image) OnPropertyChanged("BackgroundBrush");
             }
         }
         public int Width
@@ -202,9 +241,10 @@ namespace widget3.ViewModels.Abstract.Common
             {
                 _width = value;
                 OnPropertyChanged("Width");
+                if (Background?.Type == BackgroundType.Image) OnPropertyChanged("BackgroundBrush");
             }
         }
-        public object Data
+        public TileData Data
         {
             get
             {
@@ -313,6 +353,10 @@ namespace widget3.ViewModels.Abstract.Common
             fontSize.Source = UserData.Configuration;
             tileView.SetBinding(TileBase.FontSizeProperty, fontSize);
 
+            Binding fontTransperency = new Binding("FontTransperency");
+            fontTransperency.Source = UserData.Configuration;
+            tileView.SetBinding(TileBase.FontTransperencyProperty, fontTransperency);
+
             Binding subFontSize = new Binding("SubFontSize");
             subFontSize.Source = UserData.Configuration;
             tileView.SetBinding(TileBase.SubFontSizeProperty, subFontSize);
@@ -322,17 +366,35 @@ namespace widget3.ViewModels.Abstract.Common
             tileView.SetBinding(TileBase.MarginProperty, margin);
         }
 
+        private ImageSource GetCroppedImage()
+        {
+            BitmapImage image = new BitmapImage(new Uri(Background.BackgroundData, UriKind.Absolute));
+            CroppedBitmap croppedImage = null;
+
+            int height = 0;
+            int width = 0;
+
+            if (Width > Height)
+            {
+                width = image.PixelWidth;
+                height = width * Height / Width;
+            }
+            else
+            {
+                height = image.PixelHeight;
+                width = height * Width / Height;
+            }
+
+            Int32Rect rectangle = new Int32Rect(0, 0, width, height);
+            croppedImage = new CroppedBitmap(image, rectangle);
+            return croppedImage;
+        }
+
         public abstract IEnumerable<TileEditPropertyInfo> GetEditInfo();
 
         public abstract IEnumerable<CreateTileStep> GetCreateSteps();
 
         public abstract TileBase CreateTileView();
-
-        //return new TileEditInfo()
-        //{
-        //    EditLabels = new List<string>() { "Background" },
-        //        EditControls = new List<Control>() { new ComboBox() { DataContext = this } }
-        //    };
     }
 }
 
