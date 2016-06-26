@@ -13,11 +13,12 @@ namespace widget3.Services.Concrete
     {
         public TaskTileDataProvider(IUserDataService userData) : base(userData)
         {
+            RefreshAllTiles();
         }
 
         protected override void ProvideTileWithValue(TaskTileViewModel tile)
         {
-            tile.Text = (string)tile.Data;
+            tile.Text = tile.Data.Text;
         }
     }
 }
