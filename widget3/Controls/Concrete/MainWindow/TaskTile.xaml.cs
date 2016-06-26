@@ -24,7 +24,6 @@ namespace widget3.Controls.Concrete.MainWindow
     {
         public TaskTile()
         {
-            Resources.Add("BackgroundConverter", new BackgroundConverter());
             InitializeComponent();
         }
     }

@@ -14,7 +14,7 @@
              Command="{Binding Command}"
              Margin="{Binding ElementName=root, Path=Margin}" 
              CommandParameter="{Binding CommandParameter}"
-             Background="{Binding Path=Background.BackgroundData, Converter={StaticResource BackgroundConverter}}"
+             Background="Transparent"
              BorderThickness="{Binding BorderThickness}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -22,8 +22,9 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
+        <Rectangle Grid.RowSpan="2" Fill="{Binding BackgroundBrush}" Opacity="{Binding Transperency}"/>
         <Rectangle Fill="#4000FF00" Visibility="{Binding DoneVisibility}" />
-        <Label HorizontalContentAlignment="Center" Content="✔" FontSize="{Binding ElementName=root, Path=SubFontSize}" Visibility="{Binding DoneVisibility}" VerticalContentAlignment="Center" Foreground="White" Padding="0"/>
-        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding ElementName=root, Path=Foreground}"  Content="{Binding Text}" FontSize="{Binding ElementName=root, Path=FontSize}" Grid.RowSpan="2"  />
+        <Label Opacity="{Binding ElementName=root, Path=FontTransperency}" HorizontalContentAlignment="Center" Content="✔" FontSize="{Binding ElementName=root, Path=SubFontSize}" Visibility="{Binding DoneVisibility}" VerticalContentAlignment="Center" Foreground="White" Padding="0"/>
+        <Label Opacity="{Binding ElementName=root, Path=FontTransperency}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding ElementName=root, Path=Foreground}"  Content="{Binding Text}" FontSize="{Binding ElementName=root, Path=FontSize}" Grid.RowSpan="2"  />
     </Grid>
 </asbtract:TileBase>
