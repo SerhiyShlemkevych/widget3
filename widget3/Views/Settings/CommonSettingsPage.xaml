@@ -27,11 +27,13 @@
         <Label Style="{DynamicResource LabelStyle}" FontSize="20" Grid.Row="2" Content="Font size" />
         <Label Style="{DynamicResource LabelStyle}" FontSize="20" Grid.Row="3" Content="Subfont size" />
         <Label Style="{DynamicResource LabelStyle}" FontSize="20" Grid.Row="4" Content="Font transperency" />
+        <Label Style="{DynamicResource LabelStyle}" FontSize="20" Grid.Row="5" Content="Align to the right side" />
 
         <TextBox Style="{DynamicResource TextBoxStyle}" Grid.Row="0" Grid.Column="1" Text="{Binding Path=Configuration.TileSize, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
         <TextBox Style="{DynamicResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding Path=Configuration.TileMargin, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
         <TextBox Style="{DynamicResource TextBoxStyle}" Grid.Row="2" Grid.Column="1" Text="{Binding Path=Configuration.FontSize, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
         <TextBox Style="{DynamicResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Configuration.SubFontSize, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
         <Slider Style="{DynamicResource SliderStyle}" Grid.Row="4" Grid.Column="1" Value="{Binding Path=Configuration.FontTransperency}" Margin="5" VerticalAlignment="Center" Maximum="1"/>
+        <CheckBox Style="{DynamicResource CheckBoxStyle}" Grid.Row="5" Grid.Column="1" IsChecked="{Binding Path=Configuration.AlignToRightSide}" Margin="5" />
     </Grid>
 </Page>
