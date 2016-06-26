@@ -58,18 +58,6 @@ namespace widget3.ViewModels.Concrete.MainWindow
             }
         }
 
-        public DelegateCommand OpenSettingsWindowCommand
-        {
-            get;
-            private set;
-        }
-
-        public DelegateCommand ExitCommand
-        {
-            get;
-            private set;
-        }
-
         public ObservableCollection<TileBase> TileViews
         {
             get;
@@ -122,23 +110,10 @@ namespace widget3.ViewModels.Concrete.MainWindow
                     TileViews.Remove(view);
                 }
             }
-        }
-
-        private void Exit()
-        {
-            _userData.Save();
-            App.Current.Shutdown(0);
-        }
-
-        private void OpenSettingsWindow()
-        {
-            Configuration.SettingsWindowVisibility = Visibility.Visible;
-        }
+        }        
 
         private void InitializeCommands()
         {
-            OpenSettingsWindowCommand = new DelegateCommand(OpenSettingsWindow);
-            ExitCommand = new DelegateCommand(Exit);
         }
 
         private void TilesCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
