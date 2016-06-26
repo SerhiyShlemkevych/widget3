@@ -18,19 +18,18 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
     {
         private IUserDataService _userData;
         private DelegateCommand<ChildViewModel> _activateViewModelCommand;
-
+        private Visibility _windowVisibility = Visibility.Hidden;
         private Window _window;
 
         public SettingsWindowViewModel(IUserDataService userData)
         {
-            _activateViewModelCommand = new DelegateCommand<ChildViewModel>(ActivateViewModel);
+            InitializeCommands();
             ChildViewModels = new List<ChildViewModel>();
             ChildViewModelButtons = new ObservableCollection<Button>();
             _userData = userData;
-            _userData.Configuration.PropertyChanged += ConfigurationSettingWindowVisibilityPropertyChanged;
             RegisterChildViewModels();
 
-            _window = new widget3.Views.Settings.SettingsWindow() { DataContext = this, Visibility = Visibility.Hidden, WindowStartupLocation = WindowStartupLocation.Manual, Top = -2000, Left=-2000 };
+            _window = new widget3.Views.Settings.SettingsWindow() { DataContext = this, Visibility = Visibility.Hidden, WindowStartupLocation = WindowStartupLocation.Manual, Top = -2000, Left = -2000 };
             _window.Show();
             Task.Factory.StartNew(() =>
             {
@@ -40,13 +39,32 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
             });
         }
 
-        private void ConfigurationSettingWindowVisibilityPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        public DelegateCommand ShowWindowCommand
         {
-            if(e.PropertyName == "SettingsWindowVisibility")
+            get;
+            private set;
+        }
+
+        public DelegateCommand ExitCommand
+        {
+            get;
+            private set;
+        }
+
+        public Visibility WindowVisibility
+        {
+            get
             {
-                if(_userData.Configuration.SettingsWindowVisibility == Visibility.Hidden)
+                return _windowVisibility;
+            }
+            set
+            {
+                _windowVisibility = value;
+                OnPropertyChanged("WindowVisibility");
+                if (value == Visibility.Hidden)
                 {
                     ActiveViewModel?.Deactivate();
+                    _userData.Save();
                 }
             }
         }
@@ -71,6 +89,17 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
             }
         }
 
+        private void ShowWindow()
+        {
+            WindowVisibility = Visibility.Visible;
+        }
+
+        private void Exit()
+        {
+            _userData.Save();
+            App.Current.Shutdown(0);
+        }
+
         private void RegisterChildViewModel<T>() where T : ChildViewModel
         {
             var viewModel = (T)Activator.CreateInstance(typeof(T), this, _userData);
@@ -85,6 +114,13 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
             button.SetResourceReference(Button.StyleProperty, "ButtonStyle");
 
             ChildViewModelButtons.Add(button);
+        }
+
+        private void InitializeCommands()
+        {
+            _activateViewModelCommand = new DelegateCommand<ChildViewModel>(ActivateViewModel);
+            ShowWindowCommand = new DelegateCommand(ShowWindow);
+            ExitCommand = new DelegateCommand(Exit);
         }
 
         private void RegisterChildViewModels()
