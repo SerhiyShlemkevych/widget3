@@ -14,16 +14,27 @@ namespace widget3.ViewModels.Concrete.Common
         private int _tileMargin;
         private int _fontSize;
         private int _subFontSize;
-        private Visibility _settingsWindowVisibility;
-
+        private double _fontTransperency;
         private int _currentDay;
 
         public ConfigurationViewModel()
         {
-            SettingsWindowVisibility = Visibility.Hidden;
             ChangeCurrentDay((int)DateTime.Now.DayOfWeek);
             TileHeights = new List<int>() { 1, 2, 3, 4 };
             TileWidths = new List<int>() { 1, 2, 3, 4 };
+        }
+
+        public double FontTransperency
+        {
+            get
+            {
+                return _fontTransperency;
+            }
+            set
+            {
+                _fontTransperency = value;
+                OnPropertyChanged("FontTransperency");
+            }
         }
 
         public List<int> TileHeights
@@ -46,18 +57,7 @@ namespace widget3.ViewModels.Concrete.Common
             }
         }
 
-        public Visibility SettingsWindowVisibility
-        {
-            get
-            {
-                return _settingsWindowVisibility;
-            }
-            set
-            {
-                _settingsWindowVisibility = value;
-                OnPropertyChanged("SettingsWindowVisibility");
-            }
-        }
+
 
         public int RowCount
         {

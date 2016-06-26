@@ -8,6 +8,12 @@ namespace widget3.Models
 {
     public class ConfigurationModel
     {
+        public double FontTransperency
+        {
+            get;
+            set;
+        }
+
         public int FontSize
         {
             get;
