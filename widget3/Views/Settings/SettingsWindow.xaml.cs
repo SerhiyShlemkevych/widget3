@@ -22,6 +22,12 @@ namespace widget3.Views.Settings
         public SettingsWindow()
         {
             InitializeComponent();
+            DataContextChanged += SettingsWindowDataContextChanged;
+        }
+
+        private void SettingsWindowDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            tbIcon.ContextMenu.DataContext = DataContext;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
