@@ -50,6 +50,7 @@ namespace widget3
             _tileDataProviders.Add(new TaskTileDataProvider(userData));
             _tileDataProviders.Add(new AlarmTileDataProvider(userData));
             _tileDataProviders.Add(new WeatherTileDataProvider(userData));
+            _tileDataProviders.Add(new DateTimeTileDataProvider(userData));
         }
 
         private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
