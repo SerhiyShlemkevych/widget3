@@ -267,6 +267,7 @@ namespace widget3.ViewModels.Abstract.Common
             {
                 _background = value;
                 OnPropertyChanged("Background");
+                OnPropertyChanged("BackgroundBrush");
             }
         }
 
