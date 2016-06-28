@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.RowSpan="2">
             <Button Style="{DynamicResource ButtonStyle}" Height="70" FontSize="35" Margin="5" Content="+" Command="{Binding ShowCreateViewCommand}"/>
-            <Button Style="{DynamicResource ButtonStyle}" Height="70" FontSize="35" Margin="5" Content="x" Command="{Binding DeleteBackgroundCommand}"/>
+            <Button Style="{DynamicResource ButtonStyle}" Height="70" FontSize="35" Margin="5" Content="✖" Command="{Binding DeleteBackgroundCommand}"/>
         </StackPanel>
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
             <ItemsControl ItemsSource="{Binding BackgroundViews}">
