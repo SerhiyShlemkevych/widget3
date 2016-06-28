@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using widget3.Code;
@@ -30,6 +31,9 @@ namespace widget3
 
         public App()
         {
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
+
             IMapperService mapper = new ReflectionMapper();
             IUserDataService userData = new LocalUserDataService(mapper);
             userData.Load();
@@ -46,6 +50,20 @@ namespace widget3
             _tileDataProviders.Add(new TaskTileDataProvider(userData));
             _tileDataProviders.Add(new AlarmTileDataProvider(userData));
             _tileDataProviders.Add(new WeatherTileDataProvider(userData));
+        }
+
+        private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            string errorMessage = string.Format("An unhandled exception occurred: {0}", e.Exception.GetBaseException().Message);
+            MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            e.SetObserved();
+        }
+
+        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            string errorMessage = string.Format("An unhandled exception occurred: {0}", e.Exception.GetBaseException().Message);
+            MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            e.Handled = true;
         }
     }
 }
