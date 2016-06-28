@@ -938,8 +938,9 @@
   </Style>
 
   <!--********************** Implicit Styles *********************** -->
-  <!--<Style BasedOn="{StaticResource ButtonStyle}" TargetType="{x:Type Button}" />
-  <Style BasedOn="{StaticResource ScrollBarStyle}" TargetType="{x:Type ScrollBar}" />
+    <Style BasedOn="{StaticResource ScrollBarStyle}" TargetType="{x:Type ScrollBar}" />
+    <!--<Style BasedOn="{StaticResource ButtonStyle}" TargetType="{x:Type Button}" />
+
   <Style BasedOn="{StaticResource ScrollViewerStyle}" TargetType="{x:Type ScrollViewer}" />
   <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="{x:Type ComboBox}" />
   <Style BasedOn="{StaticResource ComboBoxItemStyle}" TargetType="{x:Type ComboBoxItem}" />
