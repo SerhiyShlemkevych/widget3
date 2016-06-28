@@ -148,6 +148,7 @@
     <Compile Include="Services\Abstract\TileDataProvider.cs" />
     <Compile Include="Services\Abstract\IUserDataService.cs" />
     <Compile Include="Services\Concrete\AlarmTileDataProvider.cs" />
+    <Compile Include="Services\Concrete\DateTimeTileDataProvider.cs" />
     <Compile Include="Services\Concrete\LocalUserDataService.cs" />
     <Compile Include="Services\Concrete\ReflectionMapper.cs" />
     <Compile Include="Services\Concrete\TaskTileDataProvider.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="ViewModels\Concrete\Common\BackgroundViewModel.cs" />
     <Compile Include="ViewModels\Concrete\Common\ConfigurationViewModel.cs" />
     <Compile Include="Controls\Abstract\Common\TileBase.cs" />
+    <Compile Include="ViewModels\Concrete\Common\DateTimeTileViewModel.cs" />
     <Compile Include="ViewModels\Concrete\Common\TaskTileViewModel.cs" />
     <Compile Include="ViewModels\Concrete\Common\WeatherTileViewModel.cs" />
     <Compile Include="ViewModels\Concrete\MainWindow\MainWindowViewModel.cs" />
@@ -227,6 +229,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
