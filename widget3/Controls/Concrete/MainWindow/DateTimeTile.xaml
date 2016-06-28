@@ -3,11 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-                   xmlns:asbtract="clr-namespace:widget3.Controls.Abstract.Common"
+             xmlns:asbtract="clr-namespace:widget3.Controls.Abstract.Common"
              xmlns:local="clr-namespace:widget3.Controls.Concrete.MainWindow"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+                   x:Name="root"
+             d:DesignHeight="300" d:DesignWidth="300"
+                   Grid.Column="{Binding Column}"
+             Grid.Row="{Binding Row}"
+             Grid.RowSpan="{Binding Height}"
+             Grid.ColumnSpan="{Binding Width}"
+             Command="{Binding Command}"
+             Margin="{Binding ElementName=root, Path=Margin}" 
+             CommandParameter="{Binding CommandParameter}"
+             Background="Transparent"
+             BorderThickness="{Binding BorderThickness}"
+                   >
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Opacity="{Binding Transperency}" Fill="{Binding BackgroundBrush}" Grid.RowSpan="3"/>
+        <Label Opacity="{Binding ElementName=root, Path=FontTransperency}" Padding="5,0,0,0" HorizontalContentAlignment="Left" Foreground="White" VerticalAlignment="Center" Style="{DynamicResource LabelStyle}" FontSize="{Binding ElementName=root, Path=SubFontSize}" Content="{Binding Day}" />
+        <Label Opacity="{Binding ElementName=root, Path=FontTransperency}" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" Padding="0" FontSize="{Binding ElementName=root, Path=FontSize}" Content="{Binding Text}" />
+        <Label Opacity="{Binding ElementName=root, Path=FontTransperency}" Padding="0,0,5,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="White" Grid.Row="2" Style="{DynamicResource LabelStyle}" FontSize="{Binding ElementName=root, Path=SubFontSize}" Content="{Binding Date}" />
     </Grid>
 </asbtract:TileBase>
