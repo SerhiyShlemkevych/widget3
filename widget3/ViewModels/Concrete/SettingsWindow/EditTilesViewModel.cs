@@ -241,7 +241,7 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
         private void DeleteTile()
         {
             UserData.Tiles.Remove(SelectedTile);
-            SelectedTile = null;
+            SelectTile(null);
         }
 
         private void CreateTile()
