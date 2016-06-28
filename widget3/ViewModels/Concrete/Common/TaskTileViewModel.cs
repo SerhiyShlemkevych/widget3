@@ -63,7 +63,8 @@ namespace widget3.ViewModels.Concrete.Common
                 CommonEditPropertyInfos.Transperency,
                 CommonEditPropertyInfos.Width,
                 CommonEditPropertyInfos.Height,
-                CommonEditPropertyInfos.Text
+                CommonEditPropertyInfos.Text,
+                CommonEditPropertyInfos.Days
             };
         }
 
