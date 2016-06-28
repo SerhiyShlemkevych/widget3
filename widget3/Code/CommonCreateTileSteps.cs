@@ -8,7 +8,7 @@ using widget3.Views.Settings.CreateTilePages;
 
 namespace widget3.Code
 {
-    public class CommonCreateTileSteps
+    public static class CommonCreateTileSteps
     {
         public static CreateTileStep BackgroundStep
         {
