@@ -195,6 +195,7 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
 
             UserData.Backgrounds.Add(background);
             HideCreateView();
+            SelectedFilePath = null;
         }
 
         private bool CreateBackgroundImageCanExecute()
