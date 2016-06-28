@@ -50,7 +50,7 @@ namespace widget3.Commands.Abstract
         {
             if (CanExecuteChanged != null)
             {
-                CanExecuteChanged(this, EventArgs.Empty);
+                App.Current.Dispatcher.BeginInvoke((Action)(() => CanExecuteChanged(this, EventArgs.Empty)));
             }
         }
     }
