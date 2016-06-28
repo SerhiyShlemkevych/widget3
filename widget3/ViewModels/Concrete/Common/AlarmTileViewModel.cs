@@ -19,6 +19,7 @@ namespace widget3.ViewModels.Concrete.Common
         public AlarmTileViewModel()
         {
             Type = Enums.TileType.Alarm;
+            Data = new SmallTime();
         }
 
         public Visibility ActiveVisibility
