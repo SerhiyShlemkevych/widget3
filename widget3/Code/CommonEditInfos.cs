@@ -122,5 +122,17 @@ namespace widget3.Code
                 };
             }
         }
+
+        public static TileEditPropertyInfo Days
+        {
+            get
+            {
+                return new TileEditPropertyInfo
+                {
+                    Label = "Days",
+                    Control = new DayPicker()
+                };
+            }
+        }
     }
 }
