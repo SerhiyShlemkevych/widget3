@@ -134,6 +134,9 @@
     <Compile Include="Controls\Concrete\SettingsWindow\BackgroundTile.xaml.cs">
       <DependentUpon>BackgroundTile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Concrete\SettingsWindow\DayPicker.xaml.cs">
+      <DependentUpon>DayPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\SmallTimeConverter.cs" />
     <Compile Include="Enums\BackgroundType.cs" />
     <Compile Include="Enums\TileType.cs" />
@@ -255,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Concrete\SettingsWindow\BackgroundTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Concrete\SettingsWindow\DayPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
