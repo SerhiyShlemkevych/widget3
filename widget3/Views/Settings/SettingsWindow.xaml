@@ -16,6 +16,7 @@
             <ColumnDefinition Width="170"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Rectangle Fill="{DynamicResource AddBGColor}"/>
         <ItemsControl ItemsSource="{Binding ChildViewModelButtons}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
