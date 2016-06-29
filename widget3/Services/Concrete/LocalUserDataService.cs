@@ -14,7 +14,7 @@ using widget3.ViewModels.Concrete.Common;
 
 namespace widget3.Services.Concrete
 {
-    class LocalUserDataService : IUserDataService
+    public class LocalUserDataService : IUserDataService
     {
         private string _basePath = "";
 
