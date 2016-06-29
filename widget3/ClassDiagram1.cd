@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="widget3.App" Collapsed="true">
+    <Position X="2.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAEBAAwAAAAEAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Code.CommonCreateTileSteps" Collapsed="true">
+    <Position X="6" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAgAAAEAAABA=</HashCode>
+      <FileName>Code\CommonCreateTileSteps.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Code.CommonEditPropertyInfos" Collapsed="true">
+    <Position X="7.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgABAAAAAAAAAAAAEAAAAAAAAAAQAAgCAAAAQA=</HashCode>
+      <FileName>Code\CommonEditInfos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Code.CreateTileStep" Collapsed="true">
+    <Position X="2.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACQCAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\CreateTileStep.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Code.SmallTime" Collapsed="true">
+    <Position X="8.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAACAACQAgAEQAEAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\SmallTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Code.TileData" Collapsed="true">
+    <Position X="10" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Code\TileData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Code.TileEditPropertyInfo" Collapsed="true">
+    <Position X="9.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\TileEditInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Code.WeatherSearchResult" Collapsed="true">
+    <Position X="11" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIQIAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\WeatherSearchResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Commands.Abstract.DelegateCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEQAAAAAAAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>Commands\Abstract\DelegateCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Commands.Abstract.DelegateCommand&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEQAAAAAAAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>Commands\Abstract\DelegateCommandGeneric.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Controls.Abstract.Common.TileBase" Collapsed="true">
+    <Position X="5.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAANAAIAAAAAAAAQAAAABIAAAQAACAAAEAAACAAQAIA=</HashCode>
+      <FileName>Controls\Abstract\Common\TileBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="widget3.Controls.Concrete.MainWindow.AlarmTile" Collapsed="true">
+    <Position X="3.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Concrete\MainWindow\AlarmTile.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="widget3.Controls.Concrete.MainWindow.DateTimeTile" Collapsed="true">
+    <Position X="5.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Concrete\MainWindow\DateTimeTile.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="widget3.Controls.Concrete.MainWindow.DynamicGrid" Collapsed="true">
+    <Position X="11.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACCEAAACEAAAQgAIAAAIAAAAAAAARAAAAAAEA=</HashCode>
+      <FileName>Controls\Concrete\MainWindow\DynamicGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Controls.Concrete.MainWindow.TaskTile" Collapsed="true">
+    <Position X="7.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Concrete\MainWindow\TaskTile.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="widget3.Controls.Concrete.MainWindow.WeatherTile" Collapsed="true">
+    <Position X="10" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Concrete\MainWindow\WeatherTile.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="widget3.Controls.Concrete.SettingsWindow.BackgroundTile" Collapsed="true">
+    <Position X="1" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Concrete\SettingsWindow\BackgroundTile.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="widget3.Controls.Concrete.SettingsWindow.DayPicker" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Concrete\SettingsWindow\DayPicker.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Converters.SmallTimeConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\SmallTimeConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Models.BackgroundModel" Collapsed="true">
+    <Position X="4.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\BackgroundModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Models.ConfigurationModel" Collapsed="true">
+    <Position X="11.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIAAAAAAAEAAAAAAgAAAAAACAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Models\ConfigurationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Models.TileModel" Collapsed="true">
+    <Position X="11.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgABAAAAAAAAABAAEAAAAAAAhAAQQAgAAAAAAA=</HashCode>
+      <FileName>Models\TileModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Properties.Resources" Collapsed="true">
+    <Position X="11.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Properties.Settings" Collapsed="true">
+    <Position X="4.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Services.Abstract.TileDataProvider&lt;TTile&gt;" Collapsed="true">
+    <Position X="3.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAABAAAEIAAAQAAAAAABAAAIAAAAAAAAEAAg=</HashCode>
+      <FileName>Services\Abstract\TileDataProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="widget3.Services.Concrete.AlarmTileDataProvider" Collapsed="true">
+    <Position X="5.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAABAAAACAAAAAAAQAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Services\Concrete\AlarmTileDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Services.Concrete.LocalUserDataService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAARAAEAgAARBgAkQQCBAAAIAgAEABQAIAAA=</HashCode>
+      <FileName>Services\Concrete\LocalUserDataService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Services.Concrete.ReflectionMapper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Concrete\ReflectionMapper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Services.Concrete.TaskTileDataProvider" Collapsed="true">
+    <Position X="1" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Services\Concrete\TaskTileDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Services.Concrete.WeatherTileDataProvider" Collapsed="true">
+    <Position X="3.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAkAAAAAAAAEAAAACAAAAAACAAAAAg=</HashCode>
+      <FileName>Services\Concrete\WeatherTileDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Abstract.Common.TileViewModel" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAsABKGIAIUEABBABGAAIdCAIlAIQYAgaRAIAAg=</HashCode>
+      <FileName>ViewModels\Abstract\Common\TileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Abstract.Common.ViewModel" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Abstract\Common\ViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="widget3.ViewModels.Abstract.SettingsWindow.ChildViewModel" Collapsed="true">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABQAABAAAAAQAQCAAAAAAAAgAAAAAAIAAA=</HashCode>
+      <FileName>ViewModels\Abstract\SettingsWindow\ChildViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Abstract.SettingsWindow.ParentViewModel" Collapsed="true">
+    <Position X="13.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAIAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Abstract\SettingsWindow\ParentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.Common.AlarmTileViewModel" Collapsed="true">
+    <Position X="6.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAEAAAAEAABAACAAAIAAAAABAAAAAAEAAAA=</HashCode>
+      <FileName>ViewModels\Concrete\Common\AlarmTileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.Common.BackgroundViewModel" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAIAAQAABBABAAAJWAAAAAAAQAAQBAAAAA=</HashCode>
+      <FileName>ViewModels\Concrete\Common\BackgroundViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.Common.ConfigurationViewModel" Collapsed="true">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <InheritanceLine Type="widget3.ViewModels.Abstract.Common.ViewModel" ManuallyRouted="true">
+      <Path>
+        <Point X="8.5" Y="1.062" />
+        <Point X="8.5" Y="1.375" />
+        <Point X="3.473" Y="1.375" />
+        <Point X="3.473" Y="2.759" />
+        <Point X="2.25" Y="2.759" />
+        <Point X="2.25" Y="3" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AgAAiAIAAAASAAEEAAgAAgAAQAAACGAAwEAAAASABgA=</HashCode>
+      <FileName>ViewModels\Concrete\Common\ConfigurationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.Common.TaskTileViewModel" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEABAAUAABAAAAAAIAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>ViewModels\Concrete\Common\TaskTileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.Common.WeatherTileViewModel" Collapsed="true">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEFAAAAEAAJAAAAAAIAAAIAAACAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Concrete\Common\WeatherTileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.MainWindow.MainWindowViewModel" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAgAACAAAEAAQAAACAIAAQAAAiAEAIBAEAAA=</HashCode>
+      <FileName>ViewModels\Concrete\MainWindow\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.SettingsWindow.CommonSettingsViewModel" Collapsed="true">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Concrete\SettingsWindow\CommonSettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.SettingsWindow.CreateTileViewModel" Collapsed="true">
+    <Position X="11" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAIgAQKQnBAAAFCAAAhAUAiAAAACQogACAQgAACAQk=</HashCode>
+      <FileName>ViewModels\Concrete\SettingsWindow\CreateTileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.SettingsWindow.EditTilesViewModel" Collapsed="true">
+    <Position X="11" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhQKEABAAABACABCAATQBAFPAAUAAAAJSAAgAAgIAAA=</HashCode>
+      <FileName>ViewModels\Concrete\SettingsWindow\EditTilesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.SettingsWindow.FavoriteBackgroundsViewModel" Collapsed="true">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAoLAAAIAEAABCAAABCUACAEAACIAgwggRAIwAAAE=</HashCode>
+      <FileName>ViewModels\Concrete\SettingsWindow\FavoriteBackgroundsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.SettingsWindow.SettingsWindowViewModel" Collapsed="true">
+    <Position X="13.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAAgAAAAAAAEBQBgACAAAAAAAAogAEAgBAAAA=</HashCode>
+      <FileName>ViewModels\Concrete\SettingsWindow\SettingsWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.ViewModels.Concrete.SettingsWindow.WeatherStepViewModel" Collapsed="true">
+    <Position X="1.5" Y="4" Width="1.5" />
+    <InheritanceLine Type="widget3.ViewModels.Abstract.Common.ViewModel" ManuallyRouted="true">
+      <Path>
+        <Point X="8.5" Y="1.062" />
+        <Point X="8.5" Y="1.419" />
+        <Point X="3.48" Y="1.419" />
+        <Point X="3.48" Y="3.875" />
+        <Point X="2.25" Y="3.875" />
+        <Point X="2.25" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACABAAABABAAAAAAAAAAEACAAgAAAAAIgAQA=</HashCode>
+      <FileName>ViewModels\Concrete\SettingsWindow\WeatherStepViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="widget3.Views.Main.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Main\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CommonSettingsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CommonSettingsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CteateTilePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CteateTilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.EditTilesPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\EditTilesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.FavoriteBackgroundsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\FavoriteBackgroundsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.SettingsWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\SettingsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CreateTilePages.SelectBackgroundPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CreateTilePages\SelectBackgroundPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CreateTilePages.SelectDaysPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CreateTilePages\SelectDaysPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CreateTilePages.SelectSizePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CreateTilePages\SelectSizePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CreateTilePages.SelectTextPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CreateTilePages\SelectTextPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CreateTilePages.SelectTimePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CreateTilePages\SelectTimePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CreateTilePages.SelectTypePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CreateTilePages\SelectTypePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="widget3.Views.Settings.CreateTilePages.SelectWeatherPlacePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Settings\CreateTilePages\SelectWeatherPlacePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="widget3.Services.Abstract.IMapperService" Collapsed="true">
+    <Position X="2.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Abstract\IMapperService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="widget3.Services.Abstract.ITileDataProvider" Collapsed="true">
+    <Position X="4.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Abstract\ITileDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="widget3.Services.Abstract.IUserDataService" Collapsed="true">
+    <Position X="6" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAEAAAAAAAIAgAAAAAAAAAA=</HashCode>
+      <FileName>Services\Abstract\IUserDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="widget3.Enums.BackgroundType" Collapsed="true">
+    <Position X="2.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\BackgroundType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="widget3.Enums.TileType" Collapsed="true">
+    <Position X="4.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAQQAEBAAAAEAAA=</HashCode>
+      <FileName>Enums\TileType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
