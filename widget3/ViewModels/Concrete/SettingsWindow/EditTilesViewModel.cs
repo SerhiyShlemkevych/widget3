@@ -181,7 +181,7 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
                 grid.Children.Add(label);
                 grid.Children.Add(editInfo.Control);
 
-                EditInfoViews.Add(grid);                
+                EditInfoViews.Add(grid);
             }
         }
 
@@ -256,6 +256,10 @@ namespace widget3.ViewModels.Concrete.SettingsWindow
             {
                 tile.Command = SelectTileCommand;
                 tile.CommandParameter = tile;
+            }
+            foreach (var background in Backgrounds)
+            {
+                background.Command = null;
             }
         }
 

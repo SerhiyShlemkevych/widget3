@@ -34,22 +34,30 @@ namespace widget3.Services.Concrete
             var url = string.Format(_query, ((WeatherSearchResult)tile.Data).Key, _apiKey);
 
             WebRequest request = HttpWebRequest.Create(url);
-            WebResponse response = request.GetResponse();
-
-            dynamic[] result = null;
-
-            using (var reader = new StreamReader(response.GetResponseStream()))
+            WebResponse response = null;
+            try
             {
-                string data = reader.ReadToEnd();
-                result = JsonConvert.DeserializeObject<dynamic[]>(data);
+                response = request.GetResponse();
+                dynamic[] result = null;
+
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    string data = reader.ReadToEnd();
+                    result = JsonConvert.DeserializeObject<dynamic[]>(data);
+                }
+
+                foreach (var item in result)
+                {
+                    var rawTemperature = (string)item.Temperature.Metric.Value;
+                    string temperature = string.Format("{0}°", rawTemperature.Split('.')[0]);
+                    tile.Text = temperature;
+                    tile.WeatherCondition = item.WeatherText;
+                }
             }
-
-            foreach(var item in result)
+            catch (WebException e)
             {
-                var rawTemperature = (string)item.Temperature.Metric.Value;
-                string temperature = string.Format("{0}°", rawTemperature.Split('.')[0]);
-                tile.Text = temperature;
-                tile.WeatherCondition = item.WeatherText;
+                tile.WeatherCondition = "No data";
+                return;
             }
         }
 

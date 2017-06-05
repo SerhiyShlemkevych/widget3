@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using widget3.Code;
 using widget3.Services.Abstract;
@@ -16,11 +18,12 @@ namespace widget3.Services.Concrete
     public class AlarmTileDataProvider : TileDataProvider<AlarmTileViewModel>
     {
         MediaPlayer _player;
+        private readonly string _soundPath = "resources/sound/alarm.mp3";
 
         public AlarmTileDataProvider(IUserDataService userData) : base(userData)
         {
             _player = new MediaPlayer();
-            _player.Open(new Uri("resources/sound/alarm.mp3", UriKind.Relative));
+            _player.Open(new Uri(_soundPath, UriKind.Relative));
             _timers = new Dictionary<AlarmTileViewModel, Timer>();
             Tiles.CollectionChanged += TilesCollectionChanged;
             RefreshAllTiles();
@@ -74,7 +77,14 @@ namespace widget3.Services.Concrete
 
         private void TimerCallback(object state)
         {
-            _player.Play();
+            if (File.Exists(_soundPath))
+            {
+                _player.Dispatcher.Invoke(() => _player.Play());
+            }
+            else
+            {
+                MessageBox.Show(string.Format("Sound doest not exists ({0})", _soundPath), "File not found", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private Dictionary<AlarmTileViewModel, Timer> _timers;
